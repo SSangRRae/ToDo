@@ -10,6 +10,7 @@ import UIKit
 class NewViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    var subTitles: [String?] = [nil, nil, nil, nil, nil]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,6 @@ class NewViewController: BaseViewController {
         tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(MemoTableViewCell.self, forCellReuseIdentifier: "memo")
     }
     
     override func configureConstraints() {
@@ -51,26 +51,30 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoTableViewCell
-            cell.selectionStyle = .none
+            let cell = MemoTableViewCell()
             return cell
         }
         
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "values")
-        
-        cell.selectionStyle = .none
-        cell.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
-        cell.tintColor = .white
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = NewSection.allCases[indexPath.section].rawValue
-        cell.textLabel?.textColor = .white
-        
+        let cell = InfoTableViewCell(style: .value1, reuseIdentifier: "info")
+        cell.configureCell(title: NewSection.allCases[indexPath.section].rawValue, subTitle: subTitles[indexPath.section])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = NewSection.allCases[indexPath.section].nextViewController
-        navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 1 {
+            let vc = DateViewController()
+            vc.carry = { date in
+                self.subTitles[indexPath.section] = date
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .automatic)
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 2 {
+            let vc = TagViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 3 {
+            let vc = PriorityViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

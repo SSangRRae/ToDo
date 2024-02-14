@@ -32,6 +32,7 @@ class MemoTableViewCell: UITableViewCell {
         contentView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         contentView.addSubview(titleTextField)
         contentView.addSubview(memoTextField)
+        selectionStyle = .none
         titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(16)

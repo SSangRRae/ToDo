@@ -12,4 +12,16 @@ class TagViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func configureHierarchy() {
+        
+    }
+    
+    override func configureView() {
+        super.configureView()
+    }
+    
+    override func configureConstraints() {
+        
+    }
 }

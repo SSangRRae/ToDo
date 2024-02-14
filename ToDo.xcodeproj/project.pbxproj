@@ -20,6 +20,7 @@
 		ECCA1B622B7CD01300EB4BD1 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B612B7CD01300EB4BD1 /* DateViewController.swift */; };
 		ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B632B7CD02200EB4BD1 /* TagViewController.swift */; };
 		ECCA1B662B7CD03600EB4BD1 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B652B7CD03600EB4BD1 /* PriorityViewController.swift */; };
+		ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		ECCA1B612B7CD01300EB4BD1 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		ECCA1B632B7CD02200EB4BD1 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		ECCA1B652B7CD03600EB4BD1 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
+		ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				ECCA1B5A2B7CC73800EB4BD1 /* NewSection.swift */,
 				ECCA1B582B7CBC1800EB4BD1 /* NewViewController.swift */,
 				ECCA1B5C2B7CC7BF00EB4BD1 /* MemoTableViewCell.swift */,
+				ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */,
 			);
 			path = New;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				ECCA1B5D2B7CC7BF00EB4BD1 /* MemoTableViewCell.swift in Sources */,
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
+				ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */,
 				ECCA1B522B7CB41A00EB4BD1 /* ListViewController.swift in Sources */,
 				ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */,
 			);
