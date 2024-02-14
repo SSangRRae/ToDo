@@ -14,6 +14,21 @@ class NewViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(recivedNotification), name: NSNotification.Name("TagRecived"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recivedNotification), name: NSNotification.Name("PriorityRecived"), object: nil)
+    }
+    
+    @objc func recivedNotification(notification: NSNotification) {
+        if let value = notification.userInfo?["tag"] as? String {
+            subTitles[2] = value
+            tableView.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
+        }
+        if let value = notification.userInfo?["priority"] as? String {
+            subTitles[3] = value
+            tableView.reloadRows(at: [IndexPath(row: 0, section: 3)], with: .automatic)
+        }
     }
     
     override func configureHierarchy() {

@@ -16,6 +16,7 @@ class InfoTableViewCell: UITableViewCell {
         tintColor = .white
         accessoryType = .disclosureIndicator
         textLabel?.textColor = .white
+        detailTextLabel?.textColor = .white
     }
     
     required init?(coder: NSCoder) {
