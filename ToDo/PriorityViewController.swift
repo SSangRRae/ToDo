@@ -26,8 +26,10 @@ class PriorityViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
         
         segmentedControl.backgroundColor = .white
-        segmentedControl.insertSegment(withTitle: "필수", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "기본", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "높음", at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: "중간", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "낮음", at: 2, animated: true)
+        segmentedControl.selectedSegmentIndex = 0
     }
     
     override func configureConstraints() {
@@ -39,7 +41,9 @@ class PriorityViewController: BaseViewController {
     }
     
     @objc func rightBarButtonClicked() {
-        NotificationCenter.default.post(name: NSNotification.Name("PriorityRecived"), object: nil, userInfo: ["priority": segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!])
+        if let title = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex) {
+            NotificationCenter.default.post(name: NSNotification.Name("PriorityRecived"), object: nil, userInfo: ["priority": title])
+        }
         navigationController?.popViewController(animated: true)
     }
 }

@@ -23,6 +23,9 @@
 		ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */; };
 		ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */; };
 		ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B752B7E243200EB4BD1 /* ListSection.swift */; };
+		ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */; };
+		ECCA1B7B2B7E2E8200EB4BD1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = ECCA1B7A2B7E2E8200EB4BD1 /* Realm */; };
+		ECCA1B7D2B7E2E8200EB4BD1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCA1B7C2B7E2E8200EB4BD1 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,7 @@
 		ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECCA1B752B7E243200EB4BD1 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
+		ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCA1B7D2B7E2E8200EB4BD1 /* RealmSwift in Frameworks */,
+				ECCA1B7B2B7E2E8200EB4BD1 /* Realm in Frameworks */,
 				ECCA1B602B7CC92000EB4BD1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +82,7 @@
 		ECCA1B3C2B7CB3EF00EB4BD1 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */,
 				ECCA1B542B7CB4A000EB4BD1 /* Base */,
 				ECCA1B532B7CB41E00EB4BD1 /* List */,
 				ECCA1B572B7CBBF400EB4BD1 /* New */,
@@ -138,6 +145,8 @@
 			name = ToDo;
 			packageProductDependencies = (
 				ECCA1B5F2B7CC92000EB4BD1 /* SnapKit */,
+				ECCA1B7A2B7E2E8200EB4BD1 /* Realm */,
+				ECCA1B7C2B7E2E8200EB4BD1 /* RealmSwift */,
 			);
 			productName = ToDo;
 			productReference = ECCA1B3A2B7CB3EF00EB4BD1 /* ToDo.app */;
@@ -169,6 +178,7 @@
 			mainGroup = ECCA1B312B7CB3EF00EB4BD1;
 			packageReferences = (
 				ECCA1B5E2B7CC92000EB4BD1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				ECCA1B792B7E2E8200EB4BD1 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = ECCA1B3B2B7CB3EF00EB4BD1 /* Products */;
 			projectDirPath = "";
@@ -203,6 +213,7 @@
 				ECCA1B662B7CD03600EB4BD1 /* PriorityViewController.swift in Sources */,
 				ECCA1B5D2B7CC7BF00EB4BD1 /* MemoTableViewCell.swift in Sources */,
 				ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */,
+				ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */,
 				ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */,
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
@@ -439,6 +450,14 @@
 				minimumVersion = 5.7.0;
 			};
 		};
+		ECCA1B792B7E2E8200EB4BD1 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.47.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -446,6 +465,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ECCA1B5E2B7CC92000EB4BD1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		ECCA1B7A2B7E2E8200EB4BD1 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECCA1B792B7E2E8200EB4BD1 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		ECCA1B7C2B7E2E8200EB4BD1 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECCA1B792B7E2E8200EB4BD1 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

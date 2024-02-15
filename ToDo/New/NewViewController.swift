@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    
+    var memoTitle: String = ""
+    var memo: String?
+    var deadline: Date = Date()
     var subTitles: [String?] = [nil, nil, nil, nil, nil]
 
     override func viewDidLoad() {
@@ -61,13 +66,14 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 150 : 50
+        return indexPath.section == 0 ? 100 : 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = MemoTableViewCell()
-            cell.memoTextView.delegate = self
+            cell.titleClosure = { self.memoTitle = $0 }
+            cell.memoClosure = { self.memo = $0 }
             return cell
         }
         
@@ -80,7 +86,10 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 1 {
             let vc = DateViewController()
             vc.carry = { date in
-                self.subTitles[indexPath.section] = date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.deadline = date
+                self.subTitles[indexPath.section] = dateFormatter.string(from: date)
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .automatic)
             }
             navigationController?.pushViewController(vc, animated: true)
@@ -105,7 +114,7 @@ extension NewViewController: UITextViewDelegate {
 extension NewViewController {
     func configureNavigation() {
         let leftBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftBarButtonClicked))
-        let rightBarButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        let rightBarButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
         navigationItem.title = "새로운 할 일"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationItem.leftBarButtonItem = leftBarButton
@@ -116,7 +125,16 @@ extension NewViewController {
         dismiss(animated: true)
     }
     
-    @objc func rightBarButtonClicked() {
+    @objc func addButtonClicked() {
+        guard let tag = subTitles[2], let priority = subTitles[3] else { return }
         
+        let realm = try! Realm()
+        let data = ToDoTable(title: memoTitle, memo: memo, deadline: deadline, tag: tag, priority: priority)
+        
+        try! realm.write {
+            realm.add(data)
+        }
+        
+        dismiss(animated: true)
     }
 }

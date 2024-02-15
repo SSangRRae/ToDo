@@ -10,7 +10,7 @@ import UIKit
 class DateViewController: BaseViewController {
     
     let datePicker = UIDatePicker()
-    var carry: ((String) -> Void)?
+    var carry: ((Date) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,7 @@ class DateViewController: BaseViewController {
     }
     
     @objc func rightBarButtonClicked() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        carry?(dateFormatter.string(from: datePicker.date))
+        carry?(datePicker.date)
         navigationController?.popViewController(animated: true)
     }
 }
