@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListViewController: BaseViewController {
     
@@ -18,8 +19,18 @@ class ListViewController: BaseViewController {
     }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
+    var count = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let realm = try! Realm()
+        
+        count = realm.objects(ToDoTable.self).count
+        collectionView.reloadData()
     }
     
     override func configureHierarchy() {
@@ -58,8 +69,18 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
         
         cell.configureViews(item: ListSection.allCases[indexPath.item])
+        if indexPath.item == 2 {
+            cell.countLabel.text = "\(count)"
+        }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 2 {
+            let vc = AllListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -100,6 +121,7 @@ extension ListViewController {
     
     @objc func addNewToDoButtonClicked() {
         let vc = UINavigationController(rootViewController: NewViewController())
+        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
     

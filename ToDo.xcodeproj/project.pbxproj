@@ -26,6 +26,8 @@
 		ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */; };
 		ECCA1B7B2B7E2E8200EB4BD1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = ECCA1B7A2B7E2E8200EB4BD1 /* Realm */; };
 		ECCA1B7D2B7E2E8200EB4BD1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCA1B7C2B7E2E8200EB4BD1 /* RealmSwift */; };
+		ECCA1B802B7E3D0500EB4BD1 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */; };
+		ECCA1B822B7E3F4400EB4BD1 /* AllListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B812B7E3F4400EB4BD1 /* AllListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECCA1B752B7E243200EB4BD1 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
 		ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
+		ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
+		ECCA1B812B7E3F4400EB4BD1 /* AllListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				ECCA1B752B7E243200EB4BD1 /* ListSection.swift */,
 				ECCA1B512B7CB41A00EB4BD1 /* ListViewController.swift */,
 				ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */,
+				ECCA1B7E2B7E3CED00EB4BD1 /* All */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -125,6 +130,15 @@
 				ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */,
 			);
 			path = New;
+			sourceTree = "<group>";
+		};
+		ECCA1B7E2B7E3CED00EB4BD1 /* All */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */,
+				ECCA1B812B7E3F4400EB4BD1 /* AllListTableViewCell.swift */,
+			);
+			path = All;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +232,8 @@
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
 				ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */,
+				ECCA1B802B7E3D0500EB4BD1 /* AllListViewController.swift in Sources */,
+				ECCA1B822B7E3F4400EB4BD1 /* AllListTableViewCell.swift in Sources */,
 				ECCA1B522B7CB41A00EB4BD1 /* ListViewController.swift in Sources */,
 				ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */,
 			);

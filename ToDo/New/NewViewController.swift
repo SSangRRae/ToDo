@@ -103,14 +103,6 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension NewViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "메모" {
-            textView.text = ""
-        }
-    }
-}
-
 extension NewViewController {
     func configureNavigation() {
         let leftBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftBarButtonClicked))
