@@ -17,7 +17,7 @@ class MemoTableViewCell: UITableViewCell {
         view.textColor = .white
         return view
     }()
-    let memoTextField: UITextView = {
+    let memoTextView: UITextView = {
         let view = UITextView()
         view.text = "메모"
         view.borderStyle = .none
@@ -31,14 +31,14 @@ class MemoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         contentView.addSubview(titleTextField)
-        contentView.addSubview(memoTextField)
+        contentView.addSubview(memoTextView)
         selectionStyle = .none
         titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(44)
         }
-        memoTextField.snp.makeConstraints { make in
+        memoTextView.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.bottom)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(100)

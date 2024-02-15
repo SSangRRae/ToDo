@@ -21,6 +21,8 @@
 		ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B632B7CD02200EB4BD1 /* TagViewController.swift */; };
 		ECCA1B662B7CD03600EB4BD1 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B652B7CD03600EB4BD1 /* PriorityViewController.swift */; };
 		ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */; };
+		ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */; };
+		ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B752B7E243200EB4BD1 /* ListSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		ECCA1B632B7CD02200EB4BD1 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		ECCA1B652B7CD03600EB4BD1 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 		ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECCA1B752B7E243200EB4BD1 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +94,9 @@
 		ECCA1B532B7CB41E00EB4BD1 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				ECCA1B752B7E243200EB4BD1 /* ListSection.swift */,
 				ECCA1B512B7CB41A00EB4BD1 /* ListViewController.swift */,
+				ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -196,6 +202,8 @@
 				ECCA1B5B2B7CC73800EB4BD1 /* NewSection.swift in Sources */,
 				ECCA1B662B7CD03600EB4BD1 /* PriorityViewController.swift in Sources */,
 				ECCA1B5D2B7CC7BF00EB4BD1 /* MemoTableViewCell.swift in Sources */,
+				ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */,
+				ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */,
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
 				ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */,

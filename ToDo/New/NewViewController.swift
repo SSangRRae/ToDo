@@ -67,6 +67,7 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = MemoTableViewCell()
+            cell.memoTextView.delegate = self
             return cell
         }
         
@@ -89,6 +90,14 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 3 {
             let vc = PriorityViewController()
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+extension NewViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "메모" {
+            textView.text = ""
         }
     }
 }
