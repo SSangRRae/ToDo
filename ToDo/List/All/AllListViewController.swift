@@ -10,7 +10,7 @@ import RealmSwift
 
 class AllListViewController: BaseViewController {
     
-    let tableView = UITableView()
+    let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     var list: Results<ToDoTable>!
     
@@ -30,7 +30,7 @@ class AllListViewController: BaseViewController {
         super.configureView()
         configureNavigation()
         tableView.backgroundColor = .black
-        tableView.rowHeight = 70
+        tableView.rowHeight = 100
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(AllListTableViewCell.self, forCellReuseIdentifier: "allCell")
@@ -76,6 +76,14 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allCell", for: indexPath) as! AllListTableViewCell
         cell.configureView(item: list[indexPath.row])
+        cell.tag = indexPath.row
+        cell.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         return cell
+    }
+}
+
+extension AllListViewController {
+    @objc func completeButtonClicked(_ sender: UIButton) {
+        
     }
 }

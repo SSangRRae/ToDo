@@ -131,10 +131,9 @@ extension NewViewController {
             view.makeToast("우선 순위를 선택해주세요", duration: 1)
             return
         }
-        guard let tag = subTitles[2] else { return }
         
         let realm = try! Realm()
-        let data = ToDoTable(title: memoTitle, memo: memo, deadline: deadline, tag: tag, priority: priority)
+        let data = ToDoTable(complete: false, title: memoTitle, memo: memo, deadline: deadline, tag: subTitles[2], priority: priority)
         
         try! realm.write {
             realm.add(data)
