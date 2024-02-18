@@ -7,12 +7,13 @@
 
 import UIKit
 import RealmSwift
+import Toast
 
 class NewViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    var memoTitle: String = ""
+    var memoTitle: String?
     var memo: String?
     var deadline: Date = Date()
     var subTitles: [String?] = [nil, nil, nil, nil, nil]
@@ -118,7 +119,19 @@ extension NewViewController {
     }
     
     @objc func addButtonClicked() {
-        guard let tag = subTitles[2], let priority = subTitles[3] else { return }
+        guard let memoTitle else {
+            view.makeToast("제목을 입력해주세요", duration: 1)
+            return
+        }
+        if subTitles[1] == nil {
+            view.makeToast("마감일을 입력해주세요", duration: 1)
+            return
+        }
+        guard let priority = subTitles[3] else {
+            view.makeToast("우선 순위를 선택해주세요", duration: 1)
+            return
+        }
+        guard let tag = subTitles[2] else { return }
         
         let realm = try! Realm()
         let data = ToDoTable(title: memoTitle, memo: memo, deadline: deadline, tag: tag, priority: priority)
@@ -128,5 +141,6 @@ extension NewViewController {
         }
         
         dismiss(animated: true)
+
     }
 }

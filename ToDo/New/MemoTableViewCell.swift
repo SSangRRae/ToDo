@@ -18,12 +18,12 @@ class MemoTableViewCell: UITableViewCell {
         view.textColor = .white
         return view
     }()
-    let memoTextField: UITextView = {
-        let view = UITextView()
+    let memoTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "메모"
         view.borderStyle = .none
         view.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         view.textColor = .white
-        view.returnKeyType = .done
         return view
     }()
     
@@ -45,20 +45,14 @@ class MemoTableViewCell: UITableViewCell {
 
 extension MemoTableViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text else { return false }
-        titleClosure(text)
         endEditing(true)
         return true
     }
-}
-
-extension MemoTableViewCell: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-      if text == "\n" {
-          memoClosure(memoTextField.text)
-          endEditing(true)
-      }
-      return true
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if textField == titleTextField { titleClosure(text) }
+        else { memoClosure(text) }
     }
 }
 

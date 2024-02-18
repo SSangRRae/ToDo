@@ -13,7 +13,7 @@ class ToDoTable: Object {
     @Persisted var title: String
     @Persisted var memo: String?
     @Persisted var deadline: Date
-    @Persisted var tag: String
+    @Persisted var tag: String?
     @Persisted var priority: String
     
     convenience init(title: String, memo: String? = nil, deadline: Date, tag: String, priority: String) {
