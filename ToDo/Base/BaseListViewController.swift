@@ -1,15 +1,14 @@
 //
-//  AllListViewController.swift
+//  BaseListViewController.swift
 //  ToDo
 //
-//  Created by SangRae Kim on 2/15/24.
+//  Created by SangRae Kim on 2/19/24.
 //
 
 import UIKit
 import RealmSwift
 
-class AllListViewController: BaseViewController {
-    
+class BaseListViewController: BaseViewController {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     let repository = ToDoTableRepository()
@@ -17,8 +16,6 @@ class AllListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        list = repository.readAll()
     }
     
     override func configureHierarchy() {
@@ -54,7 +51,7 @@ class AllListViewController: BaseViewController {
             self.tableView.reloadData()
         }
         let priority = UIAction(title: "우선순위 높음만 보기") { _ in
-            self.list = self.repository.readAll().where {
+            self.list = ToDoTableData.shared.allData.where {
                 $0.priority == "높음"
             }
             self.tableView.reloadData()
@@ -65,7 +62,7 @@ class AllListViewController: BaseViewController {
     }
 }
 
-extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
+extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
@@ -88,7 +85,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension AllListViewController {
+extension BaseListViewController {
     @objc func completeButtonClicked(_ sender: UIButton) {
         let tag = sender.tag
         repository.update(value: ["id": list[tag].id, "complete": !list[tag].complete])

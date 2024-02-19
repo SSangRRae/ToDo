@@ -19,21 +19,17 @@ class ListViewController: BaseViewController {
     }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
-    var count = 0
-    var completeCount = 0
+    let repository = ToDoTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        repository.readAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let realm = try! Realm()
-        
-        count = realm.objects(ToDoTable.self).count
-        completeCount = realm.objects(ToDoTable.self).where {
-            $0.complete == true
-        }.count
         collectionView.reloadData()
     }
     
@@ -73,17 +69,19 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! ListCollectionViewCell
         
         cell.configureViews(item: ListSection.allCases[indexPath.item])
-        if indexPath.item == 2 {
-            cell.countLabel.text = "\(count)"
-        }
-        if indexPath.item == 4 {
-            cell.countLabel.text = "\(completeCount)"
-        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let vc = TodayViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        if indexPath.item == 1 {
+            let vc = ExpectedViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
         if indexPath.item == 2 {
             let vc = AllListViewController()
             navigationController?.pushViewController(vc, animated: true)

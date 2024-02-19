@@ -33,4 +33,14 @@ enum ListSection: String, CaseIterable {
         case .complete: UIColor.systemGreen
         }
     }
+    
+    var count: Int {
+        switch self {
+        case .today: ToDoTableData.shared.todayData.count
+        case .plan: ToDoTableData.shared.expectedData.count
+        case .all: ToDoTableData.shared.allData.count
+        case .flag: 0
+        case .complete: ToDoTableData.shared.completeData.count
+        }
+    }
 }

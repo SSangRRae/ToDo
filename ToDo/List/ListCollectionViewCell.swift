@@ -55,7 +55,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         imageButton.setImage(item.image, for: .normal)
         imageButton.backgroundColor = item.color
         titleLabel.text = item.rawValue
-        countLabel.text = "0"
+        countLabel.text = "\(item.count)"
     }
     
     func configureConstraints() {
