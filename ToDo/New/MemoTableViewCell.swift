@@ -69,6 +69,15 @@ extension MemoTableViewCell {
         memoTextField.delegate = self
     }
     
+    func configureCell(memo: String?) {
+        titleTextField.isHidden = true
+        if let memo {
+            memoTextField.text = memo
+        } else {
+            memoTextField.text = ""
+        }
+    }
+    
     func configureConstraints() {
         titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()

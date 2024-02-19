@@ -11,15 +11,13 @@ import RealmSwift
 class CompleteViewController: BaseViewController {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    let realm = try! Realm()
+    let repository = ToDoTableRepository()
     var list: Results<ToDoTable>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        list = realm.objects(ToDoTable.self).where {
-            $0.complete == true
-        }
+        list = repository.readAll().where { $0.complete == true }
     }
     
     override func configureHierarchy() {
@@ -59,13 +57,7 @@ extension CompleteViewController: UITableViewDelegate, UITableViewDataSource {
 extension CompleteViewController {
     @objc func completeButtonClicked(_ sender: UIButton) {
         let tag = sender.tag
-        do {
-            try realm.write {
-                realm.create(ToDoTable.self, value: ["id": list[tag].id, "complete": !list[tag].complete], update: .modified)
-            }
-            tableView.reloadData()
-        } catch {
-            
-        }
+        repository.update(value: ["id": list[tag].id, "complete": !list[tag].complete])
+        tableView.reloadData()
     }
 }

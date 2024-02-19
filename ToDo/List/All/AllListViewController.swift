@@ -12,13 +12,13 @@ class AllListViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    let realm = try! Realm()
+    let repository = ToDoTableRepository()
     var list: Results<ToDoTable>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        list = realm.objects(ToDoTable.self)
+        list = repository.readAll()
     }
     
     override func configureHierarchy() {
@@ -46,15 +46,15 @@ class AllListViewController: BaseViewController {
         button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
         
         let deadline = UIAction(title: "마감일 순으로 보기") { _ in
-            self.list = self.realm.objects(ToDoTable.self).sorted(byKeyPath: "deadline", ascending: true)
+            self.list = self.repository.readAllWithSort(byKeyPath: "deadline")
             self.tableView.reloadData()
         }
         let title = UIAction(title: "제목 순으로 보기") { _ in
-            self.list = self.realm.objects(ToDoTable.self).sorted(byKeyPath: "title", ascending: true)
+            self.list = self.repository.readAllWithSort(byKeyPath: "title")
             self.tableView.reloadData()
         }
         let priority = UIAction(title: "우선순위 높음만 보기") { _ in
-            self.list = self.realm.objects(ToDoTable.self).where {
+            self.list = self.repository.readAll().where {
                 $0.priority == "높음"
             }
             self.tableView.reloadData()
@@ -80,9 +80,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "삭제") { action, view, completionHandler in
-            try! self.realm.write {
-                self.realm.delete(self.list[indexPath.row])
-            }
+            self.repository.delete(column: self.list[indexPath.row])
             tableView.reloadData()
         }
         
@@ -93,13 +91,7 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
 extension AllListViewController {
     @objc func completeButtonClicked(_ sender: UIButton) {
         let tag = sender.tag
-        do {
-            try realm.write {
-                realm.create(ToDoTable.self, value: ["id": list[tag].id, "complete": !list[tag].complete], update: .modified)
-            }
-            tableView.reloadData()
-        } catch {
-            
-        }
+        repository.update(value: ["id": list[tag].id, "complete": !list[tag].complete])
+        tableView.reloadData()
     }
 }

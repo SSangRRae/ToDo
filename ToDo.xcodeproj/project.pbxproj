@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EC77E7BE2B82616D00677304 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = EC77E7BD2B82616D00677304 /* Toast */; };
 		EC77E7C62B83475500677304 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7C52B83475500677304 /* CompleteViewController.swift */; };
+		EC77E7CA2B836AEE00677304 /* ToDoTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7C92B836AEE00677304 /* ToDoTableRepository.swift */; };
 		ECCA1B3E2B7CB3EF00EB4BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */; };
 		ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */; };
 		ECCA1B472B7CB3F100EB4BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCA1B462B7CB3F100EB4BD1 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		EC77E7C52B83475500677304 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		EC77E7C92B836AEE00677304 /* ToDoTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableRepository.swift; sourceTree = "<group>"; };
 		ECCA1B3A2B7CB3EF00EB4BD1 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */,
+				EC77E7C92B836AEE00677304 /* ToDoTableRepository.swift */,
 				ECCA1B542B7CB4A000EB4BD1 /* Base */,
 				ECCA1B532B7CB41E00EB4BD1 /* List */,
 				ECCA1B572B7CBBF400EB4BD1 /* New */,
@@ -245,6 +248,7 @@
 				ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */,
 				ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */,
 				ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */,
+				EC77E7CA2B836AEE00677304 /* ToDoTableRepository.swift in Sources */,
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
 				ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */,
