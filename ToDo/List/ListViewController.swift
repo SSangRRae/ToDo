@@ -20,6 +20,7 @@ class ListViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
     var count = 0
+    var completeCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,9 @@ class ListViewController: BaseViewController {
         let realm = try! Realm()
         
         count = realm.objects(ToDoTable.self).count
+        completeCount = realm.objects(ToDoTable.self).where {
+            $0.complete == true
+        }.count
         collectionView.reloadData()
     }
     
@@ -72,6 +76,9 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.item == 2 {
             cell.countLabel.text = "\(count)"
         }
+        if indexPath.item == 4 {
+            cell.countLabel.text = "\(completeCount)"
+        }
         
         return cell
     }
@@ -79,6 +86,10 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == 2 {
             let vc = AllListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        if indexPath.item == 4 {
+            let vc = CompleteViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
     }

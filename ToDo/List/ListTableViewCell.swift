@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class AllListTableViewCell: UITableViewCell {
+class ListTableViewCell: UITableViewCell {
     
     let completeButton: UIButton = {
         let view = UIButton()
