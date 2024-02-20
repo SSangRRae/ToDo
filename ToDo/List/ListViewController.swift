@@ -10,16 +10,7 @@ import RealmSwift
 
 class ListViewController: BaseViewController {
     
-    let titleLabel: UILabel = {
-        let view = UILabel()
-        view.text = "전체"
-        view.textColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
-        view.font = .systemFont(ofSize: 30)
-        return view
-    }()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-    
-    let repository = ToDoTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +20,10 @@ class ListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let realm = try! Realm()
         collectionView.reloadData()
     }
     
     override func configureHierarchy() {
-        view.addSubview(titleLabel)
         view.addSubview(collectionView)
     }
     
@@ -49,13 +38,8 @@ class ListViewController: BaseViewController {
     }
     
     override func configureConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.leading.top.equalTo(view.safeAreaLayoutGuide).offset(8)
-        }
-        
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.directionalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
@@ -131,6 +115,7 @@ extension ListViewController {
     @objc func addNewToDoButtonClicked() {
         let vc = UINavigationController(rootViewController: NewViewController())
         vc.modalPresentationStyle = .fullScreen
+        
         present(vc, animated: true)
     }
     

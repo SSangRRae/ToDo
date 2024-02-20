@@ -11,6 +11,12 @@ import RealmSwift
 class ToDoTableRepository {
     let realm = try! Realm()
     
+    func add(object: Object?) {
+        try! realm.write({
+            realm.add(object!)
+        })
+    }
+    
     func readAll() {
         print(realm.configuration.fileURL!)
         ToDoTableData.shared.allData = realm.objects(ToDoTable.self)

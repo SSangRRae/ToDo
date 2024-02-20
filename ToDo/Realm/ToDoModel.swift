@@ -17,9 +17,8 @@ class ToDoTable: Object {
     @Persisted var tag: String?
     @Persisted var priority: String
     
-    convenience init(complete: Bool, title: String, memo: String? = nil, deadline: Date, tag: String? = nil, priority: String) {
+    convenience init(complete: Bool = false, title: String, memo: String? = nil, deadline: Date, tag: String? = nil, priority: String) {
         self.init()
-        self.complete = complete
         self.title = title
         self.memo = memo
         self.deadline = deadline

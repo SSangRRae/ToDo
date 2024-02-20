@@ -10,8 +10,6 @@ import RealmSwift
 
 class BaseListViewController: BaseViewController {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    
-    let repository = ToDoTableRepository()
     var list: Results<ToDoTable>!
     
     override func viewDidLoad() {
@@ -73,6 +71,12 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.completeButton.tag = indexPath.row
         cell.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = NewViewController()
+        vc.todo = list[indexPath.row]
+        present(UINavigationController(rootViewController: vc), animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

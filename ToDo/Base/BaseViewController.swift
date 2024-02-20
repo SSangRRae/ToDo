@@ -8,6 +8,8 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    let repository = ToDoTableRepository()
 
     override func viewDidLoad() {
         super.viewDidLoad()

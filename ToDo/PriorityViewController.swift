@@ -42,7 +42,7 @@ class PriorityViewController: BaseViewController {
     
     @objc func rightBarButtonClicked() {
         if let title = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex) {
-            NotificationCenter.default.post(name: NSNotification.Name("PriorityRecived"), object: nil, userInfo: ["priority": title])
+            NotificationCenter.default.post(name: NSNotification.Name("priority"), object: nil, userInfo: ["priority": title])
         }
         navigationController?.popViewController(animated: true)
     }

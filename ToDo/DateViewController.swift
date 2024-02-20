@@ -10,7 +10,6 @@ import UIKit
 class DateViewController: BaseViewController {
     
     let datePicker = UIDatePicker()
-    var carry: ((Date) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class DateViewController: BaseViewController {
     }
     
     @objc func rightBarButtonClicked() {
-        carry?(datePicker.date)
+        NotificationCenter.default.post(name: NSNotification.Name("deadline"), object: nil, userInfo: ["deadline": dateToString(date: datePicker.date)])
         navigationController?.popViewController(animated: true)
     }
 }

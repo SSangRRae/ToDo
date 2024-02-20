@@ -13,29 +13,36 @@ class NewViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
+    var todo: ToDoTable? = nil
     var memoTitle: String?
     var memo: String?
-    var deadline: Date = Date()
-    var subTitles: [String?] = [nil, nil, nil, nil, nil]
-    var images: [UIImage?] = [nil, nil, nil, nil, nil]
+    var deadline: String?
+    var tag: String?
+    var priority: String?
+    var image: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)
         
-        let a = UIImageView()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(recivedNotification), name: NSNotification.Name("TagRecived"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recivedNotification), name: NSNotification.Name("PriorityRecived"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("deadline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("tag"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("priority"), object: nil)
     }
     
-    @objc func recivedNotification(notification: NSNotification) {
+    @objc func receivedNotification(notification: NSNotification) {
+        if let value = notification.userInfo?["deadline"] as? String {
+            deadline = value
+            tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+        }
+        
         if let value = notification.userInfo?["tag"] as? String {
-            subTitles[2] = value
+            tag = value
             tableView.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
         }
+        
         if let value = notification.userInfo?["priority"] as? String {
-            subTitles[3] = value
+            priority = value
             tableView.reloadRows(at: [IndexPath(row: 0, section: 3)], with: .automatic)
         }
     }
@@ -51,6 +58,8 @@ class NewViewController: BaseViewController {
         tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(MemoTableViewCell.self, forCellReuseIdentifier: MemoTableViewCell.identifier)
+        tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: InfoTableViewCell.identifier)
     }
     
     override func configureConstraints() {
@@ -75,27 +84,51 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = MemoTableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
+            if let todo {
+                cell.titleTextField.text = todo.title
+                cell.memoTextField.text = todo.memo
+                return cell
+            }
             cell.titleClosure = { self.memoTitle = $0 }
             cell.memoClosure = { self.memo = $0 }
             return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
+            
+            if let todo {
+                var value: String?
+                
+                switch indexPath.section {
+                case NewSection.deadline.rawValue: value = dateToString(date: todo.deadline)
+                case NewSection.tag.rawValue: value = todo.tag
+                case NewSection.priority.rawValue: value = todo.priority
+                case NewSection.image.rawValue: cell.selectedImageView.image = loadImageToDocument(fileName: "\(todo.id)")
+                default: break
+                }
+                cell.configureCell(title: NewSection.allCases[indexPath.section].title, value: value)
+                return cell
+            }
+            var value: String?
+            
+            switch indexPath.section {
+            case NewSection.deadline.rawValue: value = deadline
+            case NewSection.tag.rawValue: value = tag
+            case NewSection.priority.rawValue: value = priority
+            case NewSection.image.rawValue:
+                if let image {
+                    cell.selectedImageView.image = image
+                }
+            default: break
+            }
+            cell.configureCell(title: NewSection.allCases[indexPath.section].title, value: value)
+            return cell
         }
-        
-        let cell = InfoTableViewCell(style: .value1, reuseIdentifier: "info")
-        cell.configureCell(title: NewSection.allCases[indexPath.section].rawValue, subTitle: subTitles[indexPath.section], image: images[indexPath.section])
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let vc = DateViewController()
-            vc.carry = { date in
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                self.deadline = date
-                self.subTitles[indexPath.section] = dateFormatter.string(from: date)
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .automatic)
-            }
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 2 {
             let vc = TagViewController()
@@ -121,9 +154,7 @@ extension NewViewController: UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print(#function)
         
-        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            images[4] = pickedImage
-        }
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage { image = pickedImage }
         tableView.reloadData()
         dismiss(animated: true)
     }
@@ -131,12 +162,28 @@ extension NewViewController: UIImagePickerControllerDelegate, UINavigationContro
 
 extension NewViewController {
     func configureNavigation() {
-        let leftBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftBarButtonClicked))
-        let rightBarButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
-        navigationItem.title = "새로운 할 일"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationItem.leftBarButtonItem = leftBarButton
-        navigationItem.rightBarButtonItem = rightBarButton
+        if let todo {
+            let leftBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftBarButtonClicked))
+            let rightBarButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(updateButtonClicked))
+            
+            navigationItem.title = todo.title
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationItem.leftBarButtonItem = leftBarButton
+            navigationItem.rightBarButtonItem = rightBarButton
+        }
+        else {
+            let leftBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftBarButtonClicked))
+            let rightBarButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
+            
+            navigationItem.title = "새로운 할 일"
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationItem.leftBarButtonItem = leftBarButton
+            navigationItem.rightBarButtonItem = rightBarButton
+        }
+    }
+    
+    @objc func updateButtonClicked() {
+        
     }
     
     @objc func leftBarButtonClicked() {
@@ -148,27 +195,20 @@ extension NewViewController {
             view.makeToast("제목을 입력해주세요", duration: 1)
             return
         }
-        if subTitles[1] == nil {
+        guard let deadline else  {
             view.makeToast("마감일을 입력해주세요", duration: 1)
             return
         }
-        guard let priority = subTitles[3] else {
+        guard let priority else  {
             view.makeToast("우선 순위를 선택해주세요", duration: 1)
             return
         }
-        
-        let realm = try! Realm()
-        let data = ToDoTable(complete: false, title: memoTitle, memo: memo, deadline: deadline, tag: subTitles[2], priority: priority)
-        
-        try! realm.write {
-            realm.add(data)
-        }
-        
-        if let image = images[4] {
-            saveImageToDocument(image: image, fileName: "\(data.id)")
-        }
-        
-        dismiss(animated: true)
 
+        todo = ToDoTable(title: memoTitle, memo: memo, deadline: stringToDate(stringDate: deadline), tag: tag, priority: priority)
+        repository.add(object: todo)
+        if let image {
+            saveImageToDocument(image: image, fileName: "\(todo!.id)")
+        }
+        dismiss(animated: true)
     }
 }

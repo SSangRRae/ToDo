@@ -86,12 +86,10 @@ class InfoTableViewCell: UITableViewCell {
         }
     }
     
-    func configureCell(title: String, subTitle: String?, image: UIImage?) {
+    func configureCell(title: String, value: String?) {
         titleLabel.text = title
-        if subTitle == nil {
-            selectedImageView.image = image
-        } else {
-            subTitleLabel.text = subTitle
+        if let value {
+            subTitleLabel.text = value
         }
     }
 }

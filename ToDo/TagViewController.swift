@@ -39,7 +39,7 @@ class TagViewController: BaseViewController {
     }
     
     @objc func rightBarButtonClicked() {
-        NotificationCenter.default.post(name: NSNotification.Name("TagRecived"), object: nil, userInfo: ["tag": textField.text!])
+        NotificationCenter.default.post(name: NSNotification.Name("tag"), object: nil, userInfo: ["tag": textField.text!])
         navigationController?.popViewController(animated: true)
     }
 }

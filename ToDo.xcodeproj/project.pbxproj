@@ -15,6 +15,7 @@
 		EC77E7D02B8384B500677304 /* ExpectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7CF2B8384B500677304 /* ExpectedViewController.swift */; };
 		EC77E7D22B8389C200677304 /* ToDoTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D12B8389C200677304 /* ToDoTableData.swift */; };
 		EC77E7D62B838E7000677304 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D52B838E7000677304 /* Extensions.swift */; };
+		EC77E7DA2B84DA1A00677304 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D92B84DA1A00677304 /* Protocol.swift */; };
 		ECCA1B3E2B7CB3EF00EB4BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */; };
 		ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */; };
 		ECCA1B472B7CB3F100EB4BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCA1B462B7CB3F100EB4BD1 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		EC77E7CF2B8384B500677304 /* ExpectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectedViewController.swift; sourceTree = "<group>"; };
 		EC77E7D12B8389C200677304 /* ToDoTableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableData.swift; sourceTree = "<group>"; };
 		EC77E7D52B838E7000677304 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EC77E7D92B84DA1A00677304 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		ECCA1B3A2B7CB3EF00EB4BD1 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		ECCA1B3C2B7CB3EF00EB4BD1 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				EC77E7D92B84DA1A00677304 /* Protocol.swift */,
 				EC77E7D42B838E5B00677304 /* Extension */,
 				EC77E7D32B838E0600677304 /* Realm */,
 				ECCA1B542B7CB4A000EB4BD1 /* Base */,
@@ -266,6 +269,7 @@
 				EC77E7D02B8384B500677304 /* ExpectedViewController.swift in Sources */,
 				ECCA1B5D2B7CC7BF00EB4BD1 /* MemoTableViewCell.swift in Sources */,
 				ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */,
+				EC77E7DA2B84DA1A00677304 /* Protocol.swift in Sources */,
 				ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */,
 				ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */,
 				EC77E7CA2B836AEE00677304 /* ToDoTableRepository.swift in Sources */,
