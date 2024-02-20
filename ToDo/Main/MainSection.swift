@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ListSection: String, CaseIterable {
+enum MainSection: String, CaseIterable {
     case today = "오늘"
     case plan = "예정"
     case all = "전체"

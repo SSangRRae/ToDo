@@ -16,11 +16,13 @@
 		EC77E7D22B8389C200677304 /* ToDoTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D12B8389C200677304 /* ToDoTableData.swift */; };
 		EC77E7D62B838E7000677304 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D52B838E7000677304 /* Extensions.swift */; };
 		EC77E7DA2B84DA1A00677304 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D92B84DA1A00677304 /* Protocol.swift */; };
+		EC77E7DC2B84EDAA00677304 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7DB2B84EDAA00677304 /* MyListTableViewCell.swift */; };
+		EC77E7DE2B84EE6600677304 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7DD2B84EE6600677304 /* ListViewController.swift */; };
 		ECCA1B3E2B7CB3EF00EB4BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */; };
 		ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */; };
 		ECCA1B472B7CB3F100EB4BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCA1B462B7CB3F100EB4BD1 /* Assets.xcassets */; };
 		ECCA1B4A2B7CB3F100EB4BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCA1B482B7CB3F100EB4BD1 /* LaunchScreen.storyboard */; };
-		ECCA1B522B7CB41A00EB4BD1 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B512B7CB41A00EB4BD1 /* ListViewController.swift */; };
+		ECCA1B522B7CB41A00EB4BD1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B512B7CB41A00EB4BD1 /* MainViewController.swift */; };
 		ECCA1B562B7CB4AC00EB4BD1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B552B7CB4AC00EB4BD1 /* BaseViewController.swift */; };
 		ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B582B7CBC1800EB4BD1 /* NewViewController.swift */; };
 		ECCA1B5B2B7CC73800EB4BD1 /* NewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B5A2B7CC73800EB4BD1 /* NewSection.swift */; };
@@ -30,13 +32,13 @@
 		ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B632B7CD02200EB4BD1 /* TagViewController.swift */; };
 		ECCA1B662B7CD03600EB4BD1 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B652B7CD03600EB4BD1 /* PriorityViewController.swift */; };
 		ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */; };
-		ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */; };
-		ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B752B7E243200EB4BD1 /* ListSection.swift */; };
+		ECCA1B742B7E23CC00EB4BD1 /* ToDoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B732B7E23CC00EB4BD1 /* ToDoCollectionViewCell.swift */; };
+		ECCA1B762B7E243200EB4BD1 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B752B7E243200EB4BD1 /* MainSection.swift */; };
 		ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */; };
 		ECCA1B7B2B7E2E8200EB4BD1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = ECCA1B7A2B7E2E8200EB4BD1 /* Realm */; };
 		ECCA1B7D2B7E2E8200EB4BD1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCA1B7C2B7E2E8200EB4BD1 /* RealmSwift */; };
 		ECCA1B802B7E3D0500EB4BD1 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */; };
-		ECCA1B822B7E3F4400EB4BD1 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B812B7E3F4400EB4BD1 /* ListTableViewCell.swift */; };
+		ECCA1B822B7E3F4400EB4BD1 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B812B7E3F4400EB4BD1 /* ToDoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,13 +50,15 @@
 		EC77E7D12B8389C200677304 /* ToDoTableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableData.swift; sourceTree = "<group>"; };
 		EC77E7D52B838E7000677304 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC77E7D92B84DA1A00677304 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		EC77E7DB2B84EDAA00677304 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
+		EC77E7DD2B84EE6600677304 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		ECCA1B3A2B7CB3EF00EB4BD1 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ECCA1B462B7CB3F100EB4BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECCA1B492B7CB3F100EB4BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECCA1B4B2B7CB3F100EB4BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECCA1B512B7CB41A00EB4BD1 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		ECCA1B512B7CB41A00EB4BD1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ECCA1B552B7CB4AC00EB4BD1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ECCA1B582B7CBC1800EB4BD1 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		ECCA1B5A2B7CC73800EB4BD1 /* NewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSection.swift; sourceTree = "<group>"; };
@@ -63,11 +67,11 @@
 		ECCA1B632B7CD02200EB4BD1 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		ECCA1B652B7CD03600EB4BD1 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 		ECCA1B672B7CD2F800EB4BD1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
-		ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
-		ECCA1B752B7E243200EB4BD1 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
+		ECCA1B732B7E23CC00EB4BD1 /* ToDoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECCA1B752B7E243200EB4BD1 /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		ECCA1B772B7E2E0B00EB4BD1 /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 		ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
-		ECCA1B812B7E3F4400EB4BD1 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		ECCA1B812B7E3F4400EB4BD1 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		EC77E7DF2B84EE6B00677304 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA1B752B7E243200EB4BD1 /* MainSection.swift */,
+				ECCA1B512B7CB41A00EB4BD1 /* MainViewController.swift */,
+				ECCA1B812B7E3F4400EB4BD1 /* ToDoTableViewCell.swift */,
+				ECCA1B732B7E23CC00EB4BD1 /* ToDoCollectionViewCell.swift */,
+				ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */,
+				EC77E7C52B83475500677304 /* CompleteViewController.swift */,
+				EC77E7CB2B837D6B00677304 /* TodayViewController.swift */,
+				EC77E7CF2B8384B500677304 /* ExpectedViewController.swift */,
+				EC77E7DB2B84EDAA00677304 /* MyListTableViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		ECCA1B312B7CB3EF00EB4BD1 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +146,7 @@
 				EC77E7D42B838E5B00677304 /* Extension */,
 				EC77E7D32B838E0600677304 /* Realm */,
 				ECCA1B542B7CB4A000EB4BD1 /* Base */,
+				EC77E7DF2B84EE6B00677304 /* Main */,
 				ECCA1B532B7CB41E00EB4BD1 /* List */,
 				ECCA1B572B7CBBF400EB4BD1 /* New */,
 				ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */,
@@ -143,14 +164,7 @@
 		ECCA1B532B7CB41E00EB4BD1 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				ECCA1B812B7E3F4400EB4BD1 /* ListTableViewCell.swift */,
-				ECCA1B752B7E243200EB4BD1 /* ListSection.swift */,
-				ECCA1B512B7CB41A00EB4BD1 /* ListViewController.swift */,
-				ECCA1B732B7E23CC00EB4BD1 /* ListCollectionViewCell.swift */,
-				ECCA1B7F2B7E3D0500EB4BD1 /* AllListViewController.swift */,
-				EC77E7C52B83475500677304 /* CompleteViewController.swift */,
-				EC77E7CB2B837D6B00677304 /* TodayViewController.swift */,
-				EC77E7CF2B8384B500677304 /* ExpectedViewController.swift */,
+				EC77E7DD2B84EE6600677304 /* ListViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -265,20 +279,22 @@
 				EC77E7D22B8389C200677304 /* ToDoTableData.swift in Sources */,
 				EC77E7D62B838E7000677304 /* Extensions.swift in Sources */,
 				ECCA1B5B2B7CC73800EB4BD1 /* NewSection.swift in Sources */,
+				EC77E7DC2B84EDAA00677304 /* MyListTableViewCell.swift in Sources */,
 				ECCA1B662B7CD03600EB4BD1 /* PriorityViewController.swift in Sources */,
 				EC77E7D02B8384B500677304 /* ExpectedViewController.swift in Sources */,
 				ECCA1B5D2B7CC7BF00EB4BD1 /* MemoTableViewCell.swift in Sources */,
-				ECCA1B742B7E23CC00EB4BD1 /* ListCollectionViewCell.swift in Sources */,
+				ECCA1B742B7E23CC00EB4BD1 /* ToDoCollectionViewCell.swift in Sources */,
 				EC77E7DA2B84DA1A00677304 /* Protocol.swift in Sources */,
 				ECCA1B782B7E2E0B00EB4BD1 /* ToDoModel.swift in Sources */,
-				ECCA1B762B7E243200EB4BD1 /* ListSection.swift in Sources */,
+				ECCA1B762B7E243200EB4BD1 /* MainSection.swift in Sources */,
 				EC77E7CA2B836AEE00677304 /* ToDoTableRepository.swift in Sources */,
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
 				ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */,
 				ECCA1B802B7E3D0500EB4BD1 /* AllListViewController.swift in Sources */,
-				ECCA1B822B7E3F4400EB4BD1 /* ListTableViewCell.swift in Sources */,
-				ECCA1B522B7CB41A00EB4BD1 /* ListViewController.swift in Sources */,
+				ECCA1B822B7E3F4400EB4BD1 /* ToDoTableViewCell.swift in Sources */,
+				ECCA1B522B7CB41A00EB4BD1 /* MainViewController.swift in Sources */,
+				EC77E7DE2B84EE6600677304 /* ListViewController.swift in Sources */,
 				ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

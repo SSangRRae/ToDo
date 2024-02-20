@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+class ToDoTableViewCell: UITableViewCell {
     
     let completeButton: UIButton = {
         let view = UIButton()

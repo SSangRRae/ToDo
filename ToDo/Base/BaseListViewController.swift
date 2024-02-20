@@ -27,7 +27,7 @@ class BaseListViewController: BaseViewController {
         tableView.rowHeight = 100
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ListTableViewCell.self, forCellReuseIdentifier: "allCell")
+        tableView.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.identifier)
     }
     
     override func configureConstraints() {
@@ -66,7 +66,7 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "allCell", for: indexPath) as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
         cell.configureView(item: list[indexPath.row])
         cell.completeButton.tag = indexPath.row
         cell.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListCollectionViewCell: UICollectionViewCell {
+class ToDoCollectionViewCell: UICollectionViewCell {
     
     let imageButton: UIButton = {
         let view = UIButton()
@@ -51,7 +51,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         addSubview(countLabel)
     }
     
-    func configureViews(item: ListSection) {
+    func configureViews(item: MainSection) {
         imageButton.setImage(item.image, for: .normal)
         imageButton.backgroundColor = item.color
         titleLabel.text = item.rawValue
