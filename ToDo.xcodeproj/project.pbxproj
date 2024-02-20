@@ -18,6 +18,7 @@
 		EC77E7DA2B84DA1A00677304 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7D92B84DA1A00677304 /* Protocol.swift */; };
 		EC77E7DC2B84EDAA00677304 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7DB2B84EDAA00677304 /* MyListTableViewCell.swift */; };
 		EC77E7DE2B84EE6600677304 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7DD2B84EE6600677304 /* ListViewController.swift */; };
+		EC77E7E12B84FC7900677304 /* CheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77E7E02B84FC7900677304 /* CheckTableViewCell.swift */; };
 		ECCA1B3E2B7CB3EF00EB4BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */; };
 		ECCA1B402B7CB3EF00EB4BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */; };
 		ECCA1B472B7CB3F100EB4BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCA1B462B7CB3F100EB4BD1 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		EC77E7D92B84DA1A00677304 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		EC77E7DB2B84EDAA00677304 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		EC77E7DD2B84EE6600677304 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		EC77E7E02B84FC7900677304 /* CheckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTableViewCell.swift; sourceTree = "<group>"; };
 		ECCA1B3A2B7CB3EF00EB4BD1 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCA1B3D2B7CB3EF00EB4BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECCA1B3F2B7CB3EF00EB4BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				EC77E7DD2B84EE6600677304 /* ListViewController.swift */,
+				EC77E7E02B84FC7900677304 /* CheckTableViewCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				ECCA1B592B7CBC1800EB4BD1 /* NewViewController.swift in Sources */,
 				ECCA1B642B7CD02200EB4BD1 /* TagViewController.swift in Sources */,
 				ECCA1B682B7CD2F800EB4BD1 /* InfoTableViewCell.swift in Sources */,
+				EC77E7E12B84FC7900677304 /* CheckTableViewCell.swift in Sources */,
 				ECCA1B802B7E3D0500EB4BD1 /* AllListViewController.swift in Sources */,
 				ECCA1B822B7E3F4400EB4BD1 /* ToDoTableViewCell.swift in Sources */,
 				ECCA1B522B7CB41A00EB4BD1 /* MainViewController.swift in Sources */,

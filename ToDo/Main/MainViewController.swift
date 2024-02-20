@@ -174,7 +174,9 @@ extension MainViewController {
     }
     
     @objc func addListButtonClicked() {
+        let vc = ListViewController()
         
+        present(UINavigationController(rootViewController: vc), animated: true)
     }
     
     @objc func rightBarButtonClicked() {
