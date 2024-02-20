@@ -17,6 +17,7 @@ class NewViewController: BaseViewController {
     var memo: String?
     var deadline: Date = Date()
     var subTitles: [String?] = [nil, nil, nil, nil, nil]
+    var image: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +101,29 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 3 {
             let vc = PriorityViewController()
             navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIImagePickerController()
+            vc.allowsEditing = true
+            vc.delegate = self
+            present(vc, animated: true)
         }
+    }
+}
+
+extension NewViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print(#function)
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print(#function)
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            image = pickedImage
+        }
+        
+        dismiss(animated: true)
     }
 }
 
@@ -137,6 +160,10 @@ extension NewViewController {
         
         try! realm.write {
             realm.add(data)
+        }
+        
+        if let image {
+            saveImageToDocument(image: image, fileName: "\(data.id)")
         }
         
         dismiss(animated: true)

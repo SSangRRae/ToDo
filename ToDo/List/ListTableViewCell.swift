@@ -49,6 +49,12 @@ class ListTableViewCell: UITableViewCell {
         return view
     }()
     
+    let selectedImage: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -68,6 +74,7 @@ class ListTableViewCell: UITableViewCell {
         contentView.addSubview(memoLabel)
         contentView.addSubview(deadlineLabel)
         contentView.addSubview(tagLabel)
+        contentView.addSubview(selectedImage)
     }
     
     func configureView(item: ToDoTable) {
@@ -101,6 +108,8 @@ class ListTableViewCell: UITableViewCell {
         } else {
             tagLabel.text = ""
         }
+        
+        selectedImage.image = loadImageToDocument(fileName: "\(item.id)")
     }
     
     func configureConstraints() {
@@ -133,6 +142,12 @@ class ListTableViewCell: UITableViewCell {
         tagLabel.snp.makeConstraints { make in
             make.top.equalTo(deadlineLabel.snp.top)
             make.leading.equalTo(deadlineLabel.snp.trailing).offset(8)
+        }
+        
+        selectedImage.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.centerY.equalTo(contentView)
+            make.trailing.equalTo(contentView).inset(8)
         }
     }
 }
