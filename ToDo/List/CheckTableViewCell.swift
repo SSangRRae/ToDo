@@ -29,6 +29,8 @@ class CheckTableViewCell: UITableViewCell {
         return view
     }()
     
+    var nameClosure: ((String) -> Void)!
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -43,6 +45,14 @@ class CheckTableViewCell: UITableViewCell {
     }
 }
 
+extension CheckTableViewCell: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let text = textField.text {
+            nameClosure(text)
+        }
+    }
+}
+
 extension CheckTableViewCell {
     func configureHierarchy() {
         contentView.addSubview(iconButton)
@@ -50,6 +60,7 @@ extension CheckTableViewCell {
     }
     
     func configureView() {
+        nameTextField.delegate = self
         DispatchQueue.main.async {
             self.iconButton.layer.cornerRadius = self.iconButton.frame.width / 2
         }

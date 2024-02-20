@@ -41,11 +41,11 @@ class BaseListViewController: BaseViewController {
         button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
         
         let deadline = UIAction(title: "마감일 순으로 보기") { _ in
-            self.list = self.repository.readAllWithSort(byKeyPath: "deadline")
+            self.list = self.todoTableRepository.readAllWithSort(byKeyPath: "deadline")
             self.tableView.reloadData()
         }
         let title = UIAction(title: "제목 순으로 보기") { _ in
-            self.list = self.repository.readAllWithSort(byKeyPath: "title")
+            self.list = self.todoTableRepository.readAllWithSort(byKeyPath: "title")
             self.tableView.reloadData()
         }
         let priority = UIAction(title: "우선순위 높음만 보기") { _ in
@@ -81,7 +81,7 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "삭제") { action, view, completionHandler in
-            self.repository.delete(column: self.list[indexPath.row])
+            self.todoTableRepository.delete(column: self.list[indexPath.row])
             tableView.reloadData()
         }
         
@@ -92,7 +92,7 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
 extension BaseListViewController {
     @objc func completeButtonClicked(_ sender: UIButton) {
         let tag = sender.tag
-        repository.update(value: ["id": list[tag].id, "complete": !list[tag].complete])
+        todoTableRepository.update(value: ["id": list[tag].id, "complete": !list[tag].complete])
         tableView.reloadData()
     }
 }

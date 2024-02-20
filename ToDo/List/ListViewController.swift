@@ -11,6 +11,8 @@ class ListViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
+    var name: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -38,7 +40,12 @@ class ListViewController: BaseViewController {
     }
     
     @objc func rightBarButtonClicked() {
-        
+        guard let name else {
+            view.makeToast("목록 이름을 입력해주세요", duration: 1)
+            return
+        }
+        listsRepository.add(object: Lists(name: name))
+        dismiss(animated: true)
     }
     
     override func configureConstraints() {
@@ -55,6 +62,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CheckTableViewCell.identifier, for: indexPath) as! CheckTableViewCell
+        cell.nameClosure = { name in
+            self.name = name
+        }
         return cell
     }
 }

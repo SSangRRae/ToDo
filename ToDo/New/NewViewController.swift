@@ -205,7 +205,7 @@ extension NewViewController {
         }
 
         todo = ToDoTable(title: memoTitle, memo: memo, deadline: stringToDate(stringDate: deadline), tag: tag, priority: priority)
-        repository.add(object: todo)
+        todoTableRepository.add(object: todo)
         if let image {
             saveImageToDocument(image: image, fileName: "\(todo!.id)")
         }

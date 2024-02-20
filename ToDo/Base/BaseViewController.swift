@@ -9,7 +9,8 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    let repository = ToDoTableRepository()
+    let todoTableRepository = ToDoTableRepository()
+    let listsRepository = ListsRepository()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,6 +8,20 @@
 import UIKit
 import RealmSwift
 
+class Lists: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var name: String
+    @Persisted var regDate: Date
+    
+    @Persisted var todo: List<ToDoTable>
+    
+    convenience init(name: String, regDate: Date = Date()) {
+        self.init()
+        self.name = name
+        self.regDate = regDate
+    }
+}
+
 class ToDoTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var complete: Bool

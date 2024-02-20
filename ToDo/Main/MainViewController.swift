@@ -24,17 +24,21 @@ class MainViewController: BaseViewController {
         view.textColor = .white
         return view
     }()
-    let tableView = UITableView()
+    let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    var list: Results<Lists>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        repository.readAll()
+        todoTableRepository.readAll()
+        list = listsRepository.readAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         collectionView.reloadData()
+        tableView.reloadData()
     }
     
     override func configureHierarchy() {
@@ -83,17 +87,23 @@ class MainViewController: BaseViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(listTitleLabel.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(view)
+            make.height.equalTo(350)
         }
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier, for: indexPath) as! MyListTableViewCell
+        cell.configureCell(item: list[indexPath.row])
         return cell
     }
 }
@@ -169,14 +179,13 @@ extension MainViewController {
     @objc func addNewToDoButtonClicked() {
         let vc = UINavigationController(rootViewController: NewViewController())
         vc.modalPresentationStyle = .fullScreen
-        
         present(vc, animated: true)
     }
     
     @objc func addListButtonClicked() {
-        let vc = ListViewController()
-        
-        present(UINavigationController(rootViewController: vc), animated: true)
+        let vc = UINavigationController(rootViewController: ListViewController())
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @objc func rightBarButtonClicked() {
