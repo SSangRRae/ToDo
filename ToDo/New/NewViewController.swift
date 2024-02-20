@@ -17,11 +17,13 @@ class NewViewController: BaseViewController {
     var memo: String?
     var deadline: Date = Date()
     var subTitles: [String?] = [nil, nil, nil, nil, nil]
-    var image: UIImage?
+    var images: [UIImage?] = [nil, nil, nil, nil, nil]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)
+        
+        let a = UIImageView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recivedNotification), name: NSNotification.Name("TagRecived"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(recivedNotification), name: NSNotification.Name("PriorityRecived"), object: nil)
@@ -80,7 +82,7 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let cell = InfoTableViewCell(style: .value1, reuseIdentifier: "info")
-        cell.configureCell(title: NewSection.allCases[indexPath.section].rawValue, subTitle: subTitles[indexPath.section])
+        cell.configureCell(title: NewSection.allCases[indexPath.section].rawValue, subTitle: subTitles[indexPath.section], image: images[indexPath.section])
         return cell
     }
     
@@ -120,9 +122,9 @@ extension NewViewController: UIImagePickerControllerDelegate, UINavigationContro
         print(#function)
         
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            image = pickedImage
+            images[4] = pickedImage
         }
-        
+        tableView.reloadData()
         dismiss(animated: true)
     }
 }
@@ -162,7 +164,7 @@ extension NewViewController {
             realm.add(data)
         }
         
-        if let image {
+        if let image = images[4] {
             saveImageToDocument(image: image, fileName: "\(data.id)")
         }
         
