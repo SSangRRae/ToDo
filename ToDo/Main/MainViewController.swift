@@ -108,9 +108,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // List -> Results 어떻게..?
-//        let vc = SelectListViewController()
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = SelectListViewController()
+        vc.list = list[indexPath.row].todo.filter("TRUEPREDICATE")
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
