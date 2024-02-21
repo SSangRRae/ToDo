@@ -107,7 +107,7 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
 extension BaseListViewController {
     @objc func completeButtonClicked(_ sender: UIButton) {
         let tag = sender.tag
-        todoTableRepository.update(value: ["id": list[tag].id, "complete": !list[tag].complete])
+        todoTableRepository.updateComplete(value: ["id": list[tag].id, "complete": !list[tag].complete])
         tableView.reloadData()
     }
 }

@@ -13,6 +13,7 @@ enum NewSection: Int, CaseIterable {
     case tag
     case priority
     case image
+    case addList
     
     var title: String {
         switch self {
@@ -21,6 +22,7 @@ enum NewSection: Int, CaseIterable {
         case .tag: "태그"
         case .priority: "우선 순위"
         case .image: "이미지 추가"
+        case .addList: "목록 추가"
         }
     }
     
@@ -30,9 +32,4 @@ enum NewSection: Int, CaseIterable {
         default: 50
         }
     }
-}
-
-enum ViewController {
-    case new
-    case list
 }

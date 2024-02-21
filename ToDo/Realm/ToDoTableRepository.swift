@@ -46,7 +46,16 @@ class ToDoTableRepository {
         try! realm.write { realm.delete(column) }
     }
     
-    func update(value: [String: Any]) {
+    func update(id: ObjectId, memoTitle: String, memo: String?, deadline: Date, tag: String?, priority: String) {
+        try! realm.write {
+            realm.create(ToDoTable.self,
+                         value: ["id": id, "title": memoTitle, "memo": memo,
+                                 "deadline": deadline, "tag": tag, "priority": priority],
+                         update: .modified)
+        }
+    }
+    
+    func updateComplete(value: [String: Any]) {
         try! realm.write {
             realm.create(ToDoTable.self,
                          value: value,

@@ -20,6 +20,7 @@ class NewViewController: BaseViewController {
     var tag: String?
     var priority: String?
     var image: UIImage?
+    var list: Lists!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +104,10 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
                 if let image {
                     cell.selectedImageView.image = image
                 }
+            case NewSection.addList.rawValue:
+                if let list {
+                    value = list.name
+                }
             default: break
             }
             cell.configureCell(title: NewSection.allCases[indexPath.section].title, value: value)
@@ -120,11 +125,18 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 3 {
             let vc = PriorityViewController()
             navigationController?.pushViewController(vc, animated: true)
-        } else {
+        } else if indexPath.section == 4 {
             let vc = UIImagePickerController()
             vc.allowsEditing = true
             vc.delegate = self
             present(vc, animated: true)
+        } else {
+            let vc = ListSelectViewController()
+            vc.closure = { list in
+                self.list = list
+                tableView.reloadData()
+            }
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -179,8 +191,7 @@ extension NewViewController {
             view.makeToast("우선 순위를 선택해주세요", duration: 1)
             return
         }
-        todoTableRepository.update(value: ["id": todo.id, "title": memoTitle, "memo": memo,
-                                       "deadline": stringToDate(stringDate: deadline), "tag": tag, "priority": priority])
+        todoTableRepository.update(id: todo.id, memoTitle: memoTitle, memo: memo, deadline: stringToDate(stringDate: deadline), tag: tag, priority: priority)
         if let image {
             saveImageToDocument(image: image, fileName: "\(todo.id)")
         }
@@ -207,6 +218,17 @@ extension NewViewController {
 
         todo = ToDoTable(title: memoTitle, memo: memo, deadline: stringToDate(stringDate: deadline), tag: tag, priority: priority)
         todoTableRepository.add(object: todo)
+        
+        let realm = try! Realm()
+        do {
+            try realm.write {
+                list.todo.append(todo)
+            }
+        } catch {
+            print("list add error")
+        }
+        
+        
         if let image {
             saveImageToDocument(image: image, fileName: "\(todo.id)")
         }

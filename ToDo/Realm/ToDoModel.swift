@@ -31,6 +31,8 @@ class ToDoTable: Object {
     @Persisted var tag: String?
     @Persisted var priority: String
     
+    @Persisted(originProperty: "todo") var list: LinkingObjects<Lists>
+    
     convenience init(complete: Bool = false, title: String, memo: String? = nil, deadline: Date, tag: String? = nil, priority: String) {
         self.init()
         self.title = title

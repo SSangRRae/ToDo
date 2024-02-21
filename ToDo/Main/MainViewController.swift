@@ -144,7 +144,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController {
     
     func configureNavigation() {
+        let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "calendar.circle"), style: .plain, target: self, action: #selector(leftBarButtonClicked))
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
@@ -186,6 +188,10 @@ extension MainViewController {
         let vc = UINavigationController(rootViewController: ListViewController())
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
+    }
+    
+    @objc func leftBarButtonClicked() {
+        
     }
     
     @objc func rightBarButtonClicked() {
