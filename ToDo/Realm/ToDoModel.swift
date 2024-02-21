@@ -42,3 +42,7 @@ class ToDoTable: Object {
         self.priority = priority
     }
 }
+
+class Tag: EmbeddedObject {
+    @Persisted var name: String
+}
