@@ -95,6 +95,7 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "삭제") { action, view, completionHandler in
+            self.removeImageFromDocument(filename: "\(self.list[indexPath.row].id)")
             self.todoTableRepository.delete(column: self.list[indexPath.row])
             tableView.reloadData()
         }
