@@ -13,7 +13,7 @@ class NewViewController: BaseViewController {
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    var todo: ToDoTable? = nil
+    var todo: ToDoTable!
     var memoTitle: String?
     var memo: String?
     var deadline: String?
@@ -88,29 +88,13 @@ extension NewViewController: UITableViewDelegate, UITableViewDataSource {
             if let todo {
                 cell.titleTextField.text = todo.title
                 cell.memoTextField.text = todo.memo
-                return cell
             }
             cell.titleClosure = { self.memoTitle = $0 }
             cell.memoClosure = { self.memo = $0 }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
-            
-            if let todo {
-                var value: String?
-                
-                switch indexPath.section {
-                case NewSection.deadline.rawValue: value = dateToString(date: todo.deadline)
-                case NewSection.tag.rawValue: value = todo.tag
-                case NewSection.priority.rawValue: value = todo.priority
-                case NewSection.image.rawValue: cell.selectedImageView.image = loadImageToDocument(fileName: "\(todo.id)")
-                default: break
-                }
-                cell.configureCell(title: NewSection.allCases[indexPath.section].title, value: value)
-                return cell
-            }
             var value: String?
-            
             switch indexPath.section {
             case NewSection.deadline.rawValue: value = deadline
             case NewSection.tag.rawValue: value = tag
@@ -183,7 +167,24 @@ extension NewViewController {
     }
     
     @objc func updateButtonClicked() {
-        
+        guard let memoTitle else {
+            view.makeToast("제목을 입력해주세요", duration: 1)
+            return
+        }
+        guard let deadline else  {
+            view.makeToast("마감일을 입력해주세요", duration: 1)
+            return
+        }
+        guard let priority else  {
+            view.makeToast("우선 순위를 선택해주세요", duration: 1)
+            return
+        }
+        todoTableRepository.update(value: ["id": todo.id, "title": memoTitle, "memo": memo,
+                                       "deadline": stringToDate(stringDate: deadline), "tag": tag, "priority": priority])
+        if let image {
+            saveImageToDocument(image: image, fileName: "\(todo.id)")
+        }
+        dismiss(animated: true)
     }
     
     @objc func leftBarButtonClicked() {
@@ -207,7 +208,7 @@ extension NewViewController {
         todo = ToDoTable(title: memoTitle, memo: memo, deadline: stringToDate(stringDate: deadline), tag: tag, priority: priority)
         todoTableRepository.add(object: todo)
         if let image {
-            saveImageToDocument(image: image, fileName: "\(todo!.id)")
+            saveImageToDocument(image: image, fileName: "\(todo.id)")
         }
         dismiss(animated: true)
     }

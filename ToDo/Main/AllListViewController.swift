@@ -12,7 +12,12 @@ class AllListViewController: BaseListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        print(#function)
         list = ToDoTableData.shared.allData
+        tableView.reloadData()
     }
 }

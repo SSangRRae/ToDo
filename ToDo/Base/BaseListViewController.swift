@@ -16,6 +16,11 @@ class BaseListViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func configureHierarchy() {
         view.addSubview(tableView)
     }
@@ -75,8 +80,17 @@ extension BaseListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = NewViewController()
-        vc.todo = list[indexPath.row]
-        present(UINavigationController(rootViewController: vc), animated: true)
+        let todo = list[indexPath.row]
+        vc.todo = todo
+        vc.memoTitle = todo.title
+        vc.memo = todo.memo
+        vc.deadline = dateToString(date: todo.deadline)
+        vc.tag = todo.tag
+        vc.priority = todo.priority
+        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

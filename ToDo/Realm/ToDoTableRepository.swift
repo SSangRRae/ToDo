@@ -48,7 +48,9 @@ class ToDoTableRepository {
     
     func update(value: [String: Any]) {
         try! realm.write {
-            realm.create(ToDoTable.self, value: value, update: .modified)
+            realm.create(ToDoTable.self,
+                         value: value,
+                         update: .modified)
         }
     }
 }
