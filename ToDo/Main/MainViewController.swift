@@ -54,6 +54,8 @@ class MainViewController: BaseViewController {
         configureNavigation()
         configureToolBar()
         
+        navigationController?.navigationBar.backgroundColor = .black
+        
         collectionView.backgroundColor = .black
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -167,6 +169,7 @@ extension MainViewController {
         
         navigationController?.isToolbarHidden = false
         navigationController?.toolbar.tintColor = .white
+        navigationController?.toolbar.backgroundColor = .black
         toolbarItems = [addNewToDoButton, flexibleSpace, addList]
     }
     
@@ -197,7 +200,8 @@ extension MainViewController {
     }
     
     @objc func leftBarButtonClicked() {
-        
+        let vc = CalendarViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func rightBarButtonClicked() {
