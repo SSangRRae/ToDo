@@ -106,6 +106,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(item: list[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // List -> Results 어떻게..?
+//        let vc = SelectListViewController()
+//        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {

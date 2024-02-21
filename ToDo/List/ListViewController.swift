@@ -36,7 +36,7 @@ class ListViewController: BaseViewController {
     }
     
     @objc func leftBarButtonClicked() {
-        
+        dismiss(animated: true)
     }
     
     @objc func rightBarButtonClicked() {
